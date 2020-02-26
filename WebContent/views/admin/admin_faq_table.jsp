@@ -121,6 +121,7 @@
 				});
 			}); --%>
 		</script>
+		<input type="hidden">실험2
 	
 
 </body>

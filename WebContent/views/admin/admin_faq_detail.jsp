@@ -88,6 +88,7 @@ td {
 											<textarea class="form-control" id="summernote"></textarea>
 
 										</div>
+										<input type="hidden">실험해보기
 										<%-- <div class="form-group row">
 							<div class="col-sm-6 mb-3 mb-sm-0">
 								<button onclick="location.href='NoticeList.go'" class="form-control btn-danger" name="nemail" >공지사항</button>
