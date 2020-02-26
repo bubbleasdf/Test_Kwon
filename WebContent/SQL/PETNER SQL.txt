@@ -1,0 +1,443 @@
+﻿
+DROP TABLE CATEGORY CASCADE CONSTRAINTS;
+DROP TABLE FAQ CASCADE CONSTRAINTS;
+DROP TABLE MARKET_DETAIL CASCADE CONSTRAINTS;
+DROP TABLE MP_BOARD CASCADE CONSTRAINTS;
+DROP TABLE MP_BOARD_COMMENT CASCADE CONSTRAINTS;
+DROP TABLE MP_MESSENGER CASCADE CONSTRAINTS;
+DROP TABLE NOTICE CASCADE CONSTRAINTS;
+DROP TABLE PETNER_HOTELRESERVE CASCADE CONSTRAINTS;
+DROP TABLE PETNER_MARKET CASCADE CONSTRAINTS;
+DROP TABLE PETNER_PET CASCADE CONSTRAINTS;
+DROP TABLE PETNER_USER CASCADE CONSTRAINTS;
+DROP TABLE Q_COMMENT CASCADE CONSTRAINTS;
+DROP TABLE QNA CASCADE CONSTRAINTS;
+DROP TABLE QNA_COMMENT CASCADE CONSTRAINTS;
+DROP TABLE REVIEW CASCADE CONSTRAINTS;
+DROP TABLE VISIT CASCADE CONSTRAINTS;
+
+
+
+---- 정호 QNA, FAQ , NOTICE -----
+DROP TABLE FAQ;
+DROP SEQUENCE SEQ_FNO;
+
+
+CREATE TABLE FAQ(
+FNO NUMBER PRIMARY KEY,
+FTYPE NUMBER NOT NULL,
+TITLE VARCHAR2(200),
+CONTENT CLOB
+);
+
+
+CREATE SEQUENCE SEQ_FNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,1,'호텔 이용 가능 날짜는 몇일까지인가요?','예약 상황에 따라 다릅니다.<br>
+                (* 반려동물의 스트레스 등 여러 가지 상황을 고려해 5일 이상은 추천드리지 않습니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,1,'입질,예민한 동물은 이용 불가한가요?','입질이 심하거나 너무 예민한 경우 불가능할 수 있으니 직접 사전 방문 바랍니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,1,'kg수에 따라 가격차이는 얼마나 나나요?','1~3kg/3~5kg/5~8kg/10kg이상으로 나뉘어지며 가격은 문의 바랍니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,1,'산책서비스는 무조건 무료인가요?','산책서비스는 3일 이상 호텔 이용시 무료이며, 그 이하 이용시 한번 당 5천원 부과됩니다.<br>
+                                  (*산책해주시는 다른 업체의 펫도우미분들의 도움이므로 비용이 부과되는 점 이해 부탁드립니다.)');
+                                  
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,1,'예약했는데 날짜 변경이 하고싶은데 가능한가요?','다른 날짜에 예약이 있을 수 있으므로 정확한 문의는 전화/카카오톡/게시판 문의 부탁드립니다');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,1,'후기 작성하면 어떤 혜택이 있나요?','후기 작성해주시면 다음에 호텔 이용시, 산책 서비스 1회 제공됩니다.');
+
+
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,2,'증상이 급하시다면 바로 방문하여주시는 것은 당연하고', '증상이 미약한데 거리가 멀거나 시간조정이 힘드시다면 전화 부탁드립니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,2,'반려동물이 예방접종 후 기운이 없는데 정상인가요?', '갑자기 주사를 맞아 놀라서 그럴 수 있습니다. 단, 구토나 알레르기 반응이 나타나면 바로 내원해주세요.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,2,'예방접종은 맞추는 시기가 어떻게 되나요?', '4주/6주/9주/12주/15주/18주까지 5차 예방접종 후 그 이후엔 매년 1회 예방접종 하시는 것을 권해드립니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,2,'밥을 안먹는데 병원에 방문해야 할까요?','안먹는지 못먹는지를 봐야합니다. 간식이나 다른 음식은 먹는데 밥을 안먹는 경우가 아니라 몇일간 아무것도 먹지 않는다면 무조건 내원하셔야합니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,2,'24시간 운영하나요?','저희 펫트너+는 24시간 운영 병원을 최대한 소개합니다.');
+
+
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,3,'kg수에 따라 가격차이가 얼마나 나나요?','주로 5kg 이내로 가격차이가 나며, 종에 따라 가격이 다르므로 직접 문의 바랍니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,3,'고양이를 키우는데 무마취미용이 가능한가요?','무마취미용이 가능한 미용기관은 표시해두었습니다. 확인부탁드립니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,3,'예민한 성격인데 장시간 버틸 수 있나요?','너무 입질이 심하거나, 많이 예민하다면 담당 미용 선생님과 상의해봐야하므로, 직접 문의 바랍니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,3,'포메라니안 곰돌이컷은 어느 강아지나 가능한가요?','거의 그렇습니다. 털이 심하게 엉켜서 바리깡으로 밀어야 하는 경우를 제외하곤 모두 가능합니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,3,'손톱/발톱깎기나 항문낭 관리도 해주시나요?','네. 기본 미용에 포함되어 있는 내용입니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,3,'목욕도 기본 미용인가요?','네. 미용 후 목욕 해드립니다.');
+
+
+
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,4,'회원 정보는 안전하게 관리되나요?',' 펫트너는 회원님의 정보 보호를 위해 최소한의 개인정보를 회원가입 요건으로 하고 있으며 <br> 정보 유출에 관련된 피해가 없도록 정책적/시스템적인 보안에 최선의 노력을 다하고 있습니다.<br> 회원님의 소중한 개인정보는 저희 카드큐의 ‘개인정보보호정책’에 의거하여 안전하게 보호합니다.<br>');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,4,'회원 탈퇴 시 모든 정보가 삭제되나요?',' 탈퇴하시면 기존에 등록된 회원제 서비스의 이용자 정보 및 데이터가 모두 삭제됩니다. <br> 단, 게시판의 게시물은 삭제되지 않고 남게 되며, 탈퇴 이후 삭제요청 처리 또한 불가능하오니 이전에 직접 삭제하시거나 <br> 고객센터를 통해 삭제 요청을 해주셔야 합니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,4,'회원 탈퇴는 어떻게 하나요?','마이페이지 > 내 정보관리 > 하단의 [회원탈퇴] 버튼을 누르면 간략한 회원 탈퇴 안내를 확인하신 후 [탈퇴하기]를 눌러주시면 최종 탈퇴 처리됩니다. <br> 단, 탈퇴 후에는 탈퇴하신 아이디로 재가입 할 수 없습니다.');
+INSERT INTO FAQ VALUES(SEQ_FNO.NEXTVAL,4,'아이디/패스워드를 잊어버렸어요.',' 로그인 창 하단에 있는 [아이디 찾기 / 패스워드 찾기]를 누르시고 회원 가입 시 입력한 정보를 기재하시면 계정을 확인하실 수 있습니다.<br> 정보가 정확하지 않거나 일치하지 않는 경우 확인이 불가하오니 정확한 정보를 입력하시기 바랍니다. <br> 위 방법으로 정보 확인이 되지 않는 경우 고객센터로 연락해주시면 확인해드리도록 하겠습니다.');
+
+
+UPDATE FAQ SET CONTENT ='산책서비스는 3일 이상 호텔 이용시 무료이며, 그 이하 이용시 한번 당 5천원 부과됩니다.<br>(*산책해주시는 다른 업체의 펫도우미분들의 도움이므로 비용이 부과되는 점 이해 부탁드립니다.)'
+WHERE FNO=4;
+
+
+----FAQ 분류 ------
+
+DROP TABLE CATEGORY;
+
+create table CATEGORY(
+CA_NUM NUMBER PRIMARY KEY,
+CA_NAME VARCHAR2(50)
+);
+
+
+INSERT INTO CATEGORY VALUES(1,'호텔');
+INSERT INTO CATEGORY VALUES(2,'병원');
+INSERT INTO CATEGORY VALUES(3,'미용');
+INSERT INTO CATEGORY VALUES(4,'회원관리');
+
+
+
+
+---QNA--- 
+DROP TABLE QNA;
+DROP SEQUENCE SEQ_QNO;
+DROP TABLE QNA_COMMENT;
+DROP SEQUENCE SEQ_QCNO;
+
+CREATE TABLE QNA (
+      QNO NUMBER PRIMARY KEY,
+      QTITLE VARCHAR2(500) NOT NULL,
+      QCONTENT CLOB NOT NULL,
+      QEMAIL VARCHAR2(500) NOT NULL,
+      QDATE DATE DEFAULT SYSDATE
+      );
+
+CREATE SEQUENCE SEQ_QNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+CREATE SEQUENCE SEQ_QCNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+CREATE TABLE QNA_COMMENT(
+CNO NUMBER PRIMARY KEY,
+QNO NUMBER NOT NULL,
+CEMAIL VARCHAR2(500),
+CCONTENT CLOB,
+CDATE DATE DEFAULT SYSDATE,
+REF_CNO NUMBER,
+CLEVEL NUMBER,
+CONSTRAINT FK_REF_CNO FOREIGN KEY(REF_CNO) REFERENCES QNA_COMMENT(CNO) ON DELETE CASCADE
+
+);
+
+
+
+
+---------NOTICE -------------------------------------------------------
+
+DROP TABLE NOTICE;
+DROP SEQUENCE SEQ_NNO;
+
+
+CREATE TABLE NOTICE (
+NNO NUMBER PRIMARY KEY,
+NEMAIL VARCHAR2(150),
+NTITLE VARCHAR2(150) ,
+NCONTENT CLOB,
+NCOUNT NUMBER,
+NDATE DATE DEFAULT SYSDATE
+);
+
+
+CREATE SEQUENCE SEQ_NNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+
+
+COMMIT;
+
+
+
+----------------------------------- 혜림 ------------------------------------------------------------------------------
+
+
+DROP TABLE REVIEW;
+DROP SEQUENCE SEQ_RNO;
+
+CREATE TABLE REVIEW(
+    RNO NUMBER PRIMARY KEY, -- 후기 PK
+      RMNO NUMBER NOT NULL, -- 마켓 ID
+      RCONTENT VARCHAR2(2000) NOT NULL, -- 후기 내용
+      RNAME VARCHAR2(15) NOT NULL, -- 후기 쓴 유저 이름
+      REMAIL VARCHAR2(30) NOT NULL, -- 후기 쓴 유저 이메일
+      RSTAR NUMBER NOT NULL, -- 후기에 작성한 별점
+      RDATE DATE DEFAULT SYSDATE, -- 후기 쓴 날짜
+      REF_RNO NUMBER, -- 후기 답글 
+      RLEVEL NUMBER -- 답글인지 아닌지 
+);
+
+CREATE SEQUENCE SEQ_RNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+
+-- 문의 게시판 **********************
+DROP TABLE Q_COMMENT;
+DROP SEQUENCE SEQ_CNO;
+CREATE TABLE Q_COMMENT(
+    CNO NUMBER PRIMARY KEY, -- 댓글 PK
+      MNO NUMBER NOT NULL, -- 마켓 ID
+      CCONTENT VARCHAR2(2000) NOT NULL, -- 댓글 내용
+      CNAME VARCHAR2(15) NOT NULL, -- 댓글 쓴 유저 이름
+      CEMAIL VARCHAR2(30) NOT NULL, -- 댓글 쓴 유저 이메일
+      CDATE DATE DEFAULT SYSDATE, -- 댓글 쓴 날짜
+      REF_CNO NUMBER, -- 대댓글 
+      CLEVEL NUMBER -- 댓글인지 대댓글인지
+      --CONSTRAINT FK_MNO FOREIGN KEY(MNO) REFERENCES PETNER_MARKET(MARKET_ID) ON DELETE CASCADE,
+      --CONSTRAINT FK_REF_CNO FOREIGN KEY(REF_CNO) REFERENCES Q_COMMENT(CNO) ON DELETE CASCADE
+);
+
+SELECT * FROM Q_COMMENT 
+        START WITH CLEVEL = 1 
+      CONNECT BY PRIOR CNO = REF_CNO;
+
+SELECT * FROM petner_market;
+
+SELECT * FROM PETNER_USER;
+
+CREATE SEQUENCE SEQ_CNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+COMMIT;
+
+
+
+------------------------------------------------------------ 권구현   -----------------------------------------------------------------------------------------------------------------------------
+
+
+----------------- ADMIN 관련 (권구현) ---------------------
+
+DROP TABLE PETNER_MARKET;
+
+CREATE TABLE PETNER_MARKET(
+    MARKET_ID NUMBER UNIQUE -- 매장별 ID UNIQUE
+    , MARKET_NAME VARCHAR2(100) NOT NULL -- 상호명 필수
+    , MARKET_PASSWORD VARCHAR2(150) NOT NULL -- 매장 비밀번호 필수
+    , MARKET_EMAIL VARCHAR2(100) NOT NULL -- 매장이메일 필수
+    , MARKET_TYPE VARCHAR2(30) NOT NULL -- 매장타입 필수 (HOTEL, BEAUTY, HOSPITAL)
+    , MARKET_TEL VARCHAR2(50) NOT NULL -- 매장전화번호 필수
+    , MARKET_CELLPHONE VARCHAR2(50) -- 폰번호 안 들어갈 수 있음
+    , MARKET_ADDRESS VARCHAR2(200) NOT NULL -- 주소
+    , ENDATE DATE DEFAULT SYSDATE -- 가입날짜
+    , STATUS VARCHAR2(30) DEFAULT 'Y' -- 가입 삭제여부
+    , USER_ROLES NUMBER DEFAULT 200  -- 유저롤
+    , MARKET_PLACE VARCHAR2(100)    -- 지역(강남, 서초, 기타 등...)
+    , MARKET_MAINPHOTO VARCHAR2(100) -- 메인 사진
+);
+commit;
+
+CREATE SEQUENCE SEQ_MNO
+START WITH 10001
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+commit;
+
+-- 비번 : 1111 (MydaiqSOqRi9U6kYGql18Vqw0GRTmPWRigBtCGdcHLJ9XGRdvQhO7lbmdeJbpAGfLs6jfKnimVtJ/LEsCWoDLg==)
+INSERT INTO PETNER_MARKET VALUES (9000, '승제유호텔1', 'MydaiqSOqRi9U6kYGql18Vqw0GRTmPWRigBtCGdcHLJ9XGRdvQhO7lbmdeJbpAGfLs6jfKnimVtJ/LEsCWoDLg==', 
+'hotel001@test.com', 'HOTEL', '02-0000-0000', null, '서울시 강남구 서초동 27길', default, default, default, '강남', 'bath1.jpg');
+INSERT INTO PETNER_MARKET VALUES (9001, '승제유호텔2', 'MydaiqSOqRi9U6kYGql18Vqw0GRTmPWRigBtCGdcHLJ9XGRdvQhO7lbmdeJbpAGfLs6jfKnimVtJ/LEsCWoDLg==', 
+'hotel002@test.com', 'HOTEL', '02-0000-0000', null, '서울시 강남구 서초동 27길', default, default, default, '강남', 'bath1.jpg');
+INSERT INTO PETNER_MARKET VALUES (9002, '승제유미용1', 'MydaiqSOqRi9U6kYGql18Vqw0GRTmPWRigBtCGdcHLJ9XGRdvQhO7lbmdeJbpAGfLs6jfKnimVtJ/LEsCWoDLg==', 
+'beauty001@test.com', 'BEAUTY', '02-0000-0000', null, '서울시 강남구 서초동 27길', default, default, default, '강남', 'bath1.jpg');
+INSERT INTO PETNER_MARKET VALUES (9003, '승제유병원1', 'MydaiqSOqRi9U6kYGql18Vqw0GRTmPWRigBtCGdcHLJ9XGRdvQhO7lbmdeJbpAGfLs6jfKnimVtJ/LEsCWoDLg==', 
+'hospital001@test.com', 'HOSPITAL', '02-0000-0000', null, '서울시 강남구 서초동 27길', default, default, default, '강남', 'bath1.jpg');
+commit;
+-- 임시 디비로, NUMBER 9000번대로 잡았습니다
+
+
+--------- 호텔 디테일 관련 쿼리문 ------------
+
+DROP TABLE MARKET_DETAIL;
+
+CREATE TABLE MARKET_DETAIL(
+    MARKET_ID NUMBER
+    , MARKET_NAME VARCHAR2(100)
+    , MARKET_CHECK VARCHAR2(100)
+    , MARKET_SUBPHOTO_01 VARCHAR2(100)
+    , MARKET_SUBPHOTO_02 VARCHAR2(100)
+    , MARKET_SUBPHOTO_03 VARCHAR2(100)
+    , MARKET_SUB VARCHAR2(300)
+    , MARKET_BUS VARCHAR2(300)
+    , MARKET_CAR VARCHAR2(300)
+    , MARKET_PRICE NUMBER
+    , MARKET_INTRO VARCHAR2(2000)
+    , MAP_X NUMBER
+    , MAP_Y NUMBER
+);
+commit;
+SELECT * FROM MARKET_DETAIL;
+SELECT * FROM PETNER_MARKET WHERE STATUS='Y';
+
+INSERT INTO MARKET_DETAIL VALUES (9000, '승제유호텔1', '산책 서비스, 목욕, 스파', 'bath1.jpg', 'bath1.jpg', 'bath1.jpg'
+        , '지하철 정보입니다', '버스 정보입니다', '자가용 정보입니다', 50000, '간단한 매장 소개를 해주시면 됩니다', 37.50003799544208, 127.04277503903197);
+INSERT INTO MARKET_DETAIL VALUES (9001, '승제유호텔2', '산책 서비스, 목욕, 스파', 'bath1.jpg', 'bath1.jpg', 'bath1.jpg'
+        , '지하철 정보입니다', '버스 정보입니다', '자가용 정보입니다', 50000, '간단한 매장 소개를 해주시면 됩니다', 37.50003799544208, 127.04277503903197);
+INSERT INTO MARKET_DETAIL VALUES (9002, '승제유미용1', '산책 서비스, 목욕, 스파', 'bath1.jpg', 'bath1.jpg', 'bath1.jpg'
+        , '지하철 정보입니다', '버스 정보입니다', '자가용 정보입니다', null, '간단한 매장 소개를 해주시면 됩니다', 37.50003799544208, 127.04277503903197);
+INSERT INTO MARKET_DETAIL VALUES (9003, '승제유병원1', '산책 서비스, 목욕, 스파', 'bath1.jpg', 'bath1.jpg', 'bath1.jpg'
+        , '지하철 정보입니다', '버스 정보입니다', '자가용 정보입니다', null, '간단한 매장 소개를 해주시면 됩니다', 37.50003799544208, 127.04277503903197);        
+
+
+
+----------- 방문자 관련 쿼리문 (권구현) ----------------
+
+drop table visit;
+
+-- 총 방문자 수, 오늘 방문자 수 구해보고 싶습니다
+CREATE TABLE VISIT (V_DATE DATE NOT NULL);
+
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-16-2020','MM-DD-YYYY'));
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-17-2020','MM-DD-YYYY'));
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-18-2020','MM-DD-YYYY'));
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-19-2020','MM-DD-YYYY'));
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-20-2020','MM-DD-YYYY'));
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-21-2020','MM-DD-YYYY'));
+INSERT INTO VISIT (V_DATE) VALUES (TO_DATE('02-22-2020','MM-DD-YYYY'));
+
+-- 총 방문자 수
+SELECT COUNT(*) AS TotalCnt FROM VISIT;
+
+-- 오늘 방문자 수
+SELECT COUNT(*) AS TodayCnt FROM VISIT
+WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate,'YYYY-MM-DD');
+
+-- 어제 방문자 수
+SELECT COUNT(*) AS TodayCnt FROM VISIT
+WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-1,'YYYY-MM-DD');   -- 우오 뭐야 sysdate에 -1하면 되네?!
+
+SELECT  (SELECT COUNT(*) FROM VISIT) AS "totalCnt",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate,'YYYY-MM-DD')) AS "todayCnt",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-1 ,'YYYY-MM-DD')) AS "oneAgo",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-2 ,'YYYY-MM-DD')) AS "twoAgo",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-3 ,'YYYY-MM-DD')) AS "threeAgo",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-4 ,'YYYY-MM-DD')) AS "fourAgo",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-5 ,'YYYY-MM-DD')) AS "fiveAgo",
+        (SELECT COUNT(*) FROM VISIT  WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate-6 ,'YYYY-MM-DD')) AS "sixAgo",
+        (SELECT COUNT(*) FROM PETNER_HOTELRESERVE) AS "RESERVECNT",
+        (SELECT COUNT(*) FROM PETNER_PET) AS "PETCNT" 
+FROM    dual
+;
+
+SELECT  (SELECT count(*) FROM PETNER_MARKET) MARKET,
+        (SELECT count(*) FROM PETNER_MARKET WHERE MARKET_TYPE = '호텔') HOTEL,
+        (SELECT count(*) FROM PETNER_MARKET WHERE MARKET_TYPE = '미용') BEAUTY,
+        (SELECT count(*) FROM PETNER_MARKET WHERE MARKET_TYPE = '병원') HOSPITAL,
+        (SELECT count(*) FROM PETNER_USER) MEMBER
+FROM    dual
+;
+
+COMMIT;
+------------------------------ 현아~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~````
+
+DROP TABLE PETNER_HOTELRESERVE;
+DROP SEQUENCE SEQ_HRNO;
+
+CREATE TABLE PETNER_HOTELRESERVE(
+    RESERVE_ID NUMBER UNIQUE,
+    MARKETID NUMBER,
+    USER_EMAIL VARCHAR2(100),
+    USER_NAME VARCHAR2(50),
+    USER_PHONE VARCHAR2(50),
+    S_DATE DATE,
+    E_DATE DATE,
+    MARKET_PRICE NUMBER,
+    PET_ID NUMBER,
+    PET_NAME VARCHAR2(100),
+    PET_TYPE VARCHAR2(20),
+    STATUS VARCHAR2(50) DEFAULT '결제완료',
+    SUM_PRICE NUMBER
+);
+
+CREATE SEQUENCE SEQ_HRNO
+START WITH 100001
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+COMMIT;
+
+SELECT * FROM PETNER_HOTELRESERVE;
+
+
+
+
+-------------------------- 조장 ---------------------------------------------------------------------------
+
+DROP TABLE PETNER_USER;
+
+
+CREATE TABLE PETNER_USER(
+    USER_NAME VARCHAR2(50)
+    , USER_EMAIL VARCHAR2(100) UNIQUE
+    , USER_PASSWORD VARCHAR2(100)
+    , USER_PHONE VARCHAR2(50)
+    , USER_ROLES NUMBER DEFAULT 0
+    , USER_ENDATE DATE DEFAULT SYSDATE
+    , USER_PWD_HINT VARCHAR2(100)
+    , USER_PWD_HINT2 VARCHAR2(100)
+);
+
+-- ALTER TABLE PETNER_USER ADD(USER_ROLES NUMBER);
+-- ALTER TABLE PETNER_USER MODIFY USER_ROLES NOT NULL;
+-- ALTER TABLE PETNER_USER MODIFY (USER_ROLES DEFAULT 0);
+
+INSERT INTO PETNER_USER VALUES('admin','admin@a.com','x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==','010-0000-0000', 777, default, null, null);
+INSERT INTO PETNER_USER VALUES('test','test@a.com','7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==','010-0000-0000',default, default, null, null);
+
+COMMIT;
+
+-- UPDATE PETNER_USER SET USER_ROLES=777 WHERE USER_NAME='admin';
+
+commit;
+
+DROP TABLE PETNER_PET;
+
+CREATE TABLE PETNER_PET(
+    USER_EMAIL varchar2(100)
+    , PET_NAME varchar2(100)
+    , PET_TYPE varchar2(20)
+    , PET_BIRTH date
+    , PET_PROFILE varchar2(100)
+    , PET_WEIGHT NUMBER
+    , PET_PIC varchar2(100) DEFAULT 'default.jpg'
+    , PET_TOP VARCHAR2(3) DEFAULT 'N' NOT NULL CHECK(PET_TOP IN ('Y', 'N'))
+    , PET_ID NUMBER PRIMARY KEY
+    , PET_ENDATE DATE DEFAULT SYSDATE
+);
+
+CREATE SEQUENCE SEQ_PNO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+COMMENT ON COLUMN PETNER_PET.PET_TYPE IS '대형 중형 소형 을 나타냄';
+COMMENT ON COLUMN PETNER_PET.PET_PROFILE IS '종을 나타냄 다양할 수 있으니까 선택이 아닌 직접 입력방식';
+COMMENT ON COLUMN PETNER_PET.PET_WEIGHT IS '무게를 나타냄 5는 5키로 이하 10은 5에서 10키로,15,20도 동일. 21은 20키로 이상을 나타냄';
+comment on COLUMN PETNER_PET.PET_PIC IS '사진파일 이름';
+COMMENT ON COLUMN PETNER_PET.PET_TOP IS '대표 설정 칼럼 아직 구현은 안했음 사용할지 안할지 모르겠음.';
+
+commit;
+
+

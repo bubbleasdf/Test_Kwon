@@ -1,0 +1,70 @@
+<html>
+
+    <head>
+        <title>빌 그새끼</title>
+        <script src="../../../../resources/js/vendor/jquery-3.4.1.min.js"></script>
+    </head>
+    <style>
+        body{
+            background: lightgray;
+        }
+        a{
+            color:black;
+        }
+    </style>
+    <body>
+        <a id="">불러온 코멘트</a>
+
+        <table border="1px solid black">
+            <thead>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>별점</th>
+            </thead>
+            <a>
+                <tr>
+                    <td><a href="www.naver.com">a@a.com</a></td>
+                    <td>내용ㅇ</td>
+                    <td>별점저</td>
+                </tr>
+            </a>
+            <tr>
+                <td colspan="3">
+                    asdlfkjasldkfjaslkdfjalskdjfalksjdflkasjdflkasjdflkajsdflkajsdflkj
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+        <form action="" id="CommentForm">
+            <input type="hidden" value="cno">
+            <label for="" id="userEmail"> NAME@a.com </label>
+            <input type="text" id="c_content">
+            &#9733 <input type="text" id="starCount" 
+            min="0" max="5" value="0" maxlength="1" 
+            style="width: 30px; text-align: center;"> 
+            <span class="btn btn-primary" onclick="commentSubmit()">입력</span>
+        </form>
+        
+    </body>
+
+    <script>
+        function commentSubmit(){
+            var regExp = /[12345]/;
+            var value = $('#starCount').val();
+            
+            if(regExp.test(value)){
+                console.log('별점 : '+value);
+            }else{
+                alert('별점은 0-5까지입니다.');
+                $('#starCount').focus(); 
+                return false;
+            }
+        }
+        
+
+    </script>
+</html>
